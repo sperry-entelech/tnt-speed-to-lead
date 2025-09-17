@@ -1,0 +1,235 @@
+{
+  "name": "discovery-agent",
+  "version": "1.0.0",
+  "description": "Standardized business requirements gathering agent for transportation and service businesses",
+  "type": "mcp-agent",
+  "capabilities": [
+    "business-analysis",
+    "requirements-gathering",
+    "revenue-impact-calculation",
+    "competitor-analysis",
+    "technology-stack-assessment"
+  ],
+  "input_schemas": {
+    "business_discovery_questionnaire": {
+      "type": "object",
+      "properties": {
+        "company_profile": {
+          "type": "object",
+          "properties": {
+            "name": {"type": "string"},
+            "location": {"type": "string"},
+            "industry": {"type": "string", "enum": ["limousine", "taxi", "delivery", "field_service", "logistics"]},
+            "current_revenue": {"type": "string"},
+            "target_revenue": {"type": "string"},
+            "fleet_size": {"type": "number"},
+            "service_area": {"type": "string"},
+            "mission_statement": {"type": "string"}
+          },
+          "required": ["name", "location", "industry", "current_revenue", "target_revenue"]
+        },
+        "problem_analysis": {
+          "type": "object",
+          "properties": {
+            "current_pain_points": {"type": "array", "items": {"type": "string"}},
+            "revenue_impact": {"type": "string"},
+            "response_time_current": {"type": "string"},
+            "response_time_target": {"type": "string"},
+            "missed_opportunities": {"type": "string"},
+            "competitive_disadvantages": {"type": "array", "items": {"type": "string"}}
+          },
+          "required": ["current_pain_points", "revenue_impact", "response_time_current"]
+        },
+        "technology_stack": {
+          "type": "object",
+          "properties": {
+            "dispatch_system": {"type": "string"},
+            "crm_system": {"type": "string"},
+            "email_provider": {"type": "string"},
+            "website_platform": {"type": "string"},
+            "accounting_system": {"type": "string"},
+            "communication_tools": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "automation_goals": {
+          "type": "object",
+          "properties": {
+            "lead_capture": {"type": "boolean"},
+            "automated_responses": {"type": "boolean"},
+            "manager_notifications": {"type": "boolean"},
+            "crm_integration": {"type": "boolean"},
+            "roi_calculator": {"type": "boolean"},
+            "competitor_analysis": {"type": "boolean"}
+          }
+        },
+        "success_metrics": {
+          "type": "object",
+          "properties": {
+            "target_response_time": {"type": "string"},
+            "target_conversion_rate": {"type": "string"},
+            "monthly_lead_volume": {"type": "number"},
+            "average_booking_value": {"type": "string"},
+            "roi_expectation": {"type": "string"}
+          }
+        }
+      },
+      "required": ["company_profile", "problem_analysis", "technology_stack", "automation_goals"]
+    }
+  },
+  "output_schemas": {
+    "requirements_document": {
+      "type": "object",
+      "properties": {
+        "document_sections": {
+          "type": "object",
+          "properties": {
+            "business_context": {"type": "string"},
+            "problem_analysis": {"type": "string"},
+            "system_requirements": {"type": "string"},
+            "technical_architecture": {"type": "string"},
+            "integration_requirements": {"type": "string"},
+            "performance_benchmarks": {"type": "string"},
+            "competitive_analysis": {"type": "string"},
+            "branding_requirements": {"type": "string"},
+            "deployment_specifications": {"type": "string"},
+            "success_criteria": {"type": "string"},
+            "handoff_requirements": {"type": "string"}
+          }
+        },
+        "estimated_timeline": {"type": "string"},
+        "expected_roi": {"type": "string"},
+        "next_phase_preparation": {"type": "string"}
+      }
+    }
+  },
+  "processing_rules": {
+    "revenue_impact_calculation": {
+      "description": "Calculate quantified revenue impact using Nick Saraev Framework",
+      "methodology": [
+        "Identify current state revenue losses",
+        "Calculate missed opportunity cost",
+        "Project improved conversion rates",
+        "Estimate monthly additional bookings",
+        "Calculate ROI timeline and payback period"
+      ]
+    },
+    "competitor_analysis": {
+      "description": "Standardized competitive positioning assessment",
+      "data_points": [
+        "Local competitor pricing structures",
+        "Response time benchmarks",
+        "Service differentiation factors",
+        "Market positioning advantages",
+        "Certification and credential analysis"
+      ]
+    },
+    "technology_integration_assessment": {
+      "description": "Evaluate existing tech stack for automation potential",
+      "considerations": [
+        "API availability and documentation quality",
+        "Integration complexity and timeline impact",
+        "Data synchronization requirements",
+        "Security and compliance requirements",
+        "Scalability and performance implications"
+      ]
+    }
+  },
+  "industry_templates": {
+    "transportation": {
+      "common_integrations": ["FastTrack InVision", "Zoho CRM", "QuickBooks", "Slack"],
+      "typical_pain_points": [
+        "Delayed lead response times",
+        "Weekend/holiday coverage gaps",
+        "Manual booking processes",
+        "Inconsistent pricing communication",
+        "Poor lead qualification"
+      ],
+      "standard_kpis": [
+        "Response time (target: <5 minutes)",
+        "Conversion rate (target: 25%+)",
+        "Average booking value increase (target: 20%+)",
+        "Monthly additional bookings (target: 3-5)",
+        "Revenue volatility reduction"
+      ]
+    },
+    "field_service": {
+      "common_integrations": ["ServiceTitan", "HubSpot", "JobNimbus", "Microsoft Teams"],
+      "typical_pain_points": [
+        "Emergency call routing delays",
+        "Technician scheduling conflicts",
+        "Customer communication gaps",
+        "Parts availability tracking",
+        "Invoice processing delays"
+      ],
+      "standard_kpis": [
+        "First-call resolution rate",
+        "Technician utilization rate",
+        "Customer satisfaction scores",
+        "Revenue per service call",
+        "Repeat customer rate"
+      ]
+    }
+  },
+  "output_format": {
+    "document_structure": [
+      "# {Company Name} {Service Type} System - Phase 1 Requirements Document",
+      "## BUSINESS CONTEXT & PROBLEM ANALYSIS",
+      "### Company Profile",
+      "### Critical Revenue Problem",
+      "### Existing Technology Stack",
+      "## SYSTEM REQUIREMENTS SPECIFICATION",
+      "### Core Functionality Requirements",
+      "### Performance Benchmarks & Success Metrics",
+      "## TECHNICAL ARCHITECTURE REQUIREMENTS",
+      "### Frontend Dashboard Components",
+      "### Backend Processing Requirements",
+      "### Integration Architecture",
+      "## COMPETITIVE ANALYSIS & ROI CALCULATOR",
+      "## BRANDING & MESSAGING REQUIREMENTS",
+      "## DEPLOYMENT ENVIRONMENT SPECIFICATIONS",
+      "## SUCCESS CRITERIA & VALIDATION",
+      "## HANDOFF & DOCUMENTATION REQUIREMENTS",
+      "## NEXT PHASE PREPARATION"
+    ],
+    "file_naming": "{company_name_lowercase}_phase1_requirements.md"
+  },
+  "usage_examples": {
+    "transportation_business": {
+      "input": "Limousine company in Richmond, VA losing $15K monthly from delayed responses",
+      "output": "Complete requirements document with FastTrack integration, Zoho CRM workflows, and 5-minute response automation"
+    },
+    "field_service": {
+      "input": "HVAC company needing emergency call automation and technician dispatch optimization",
+      "output": "Requirements document with ServiceTitan integration, GPS routing, and customer notification workflows"
+    }
+  },
+  "quality_assurance": {
+    "validation_checklist": [
+      "Revenue impact quantified with specific dollar amounts",
+      "Response time improvements clearly benchmarked",
+      "Integration requirements technically feasible",
+      "Success metrics measurable and time-bound",
+      "Competitive analysis includes pricing data",
+      "ROI calculation includes payback timeline"
+    ],
+    "common_mistakes_to_avoid": [
+      "Vague revenue impact statements",
+      "Unrealistic response time targets",
+      "Missing integration complexity assessment",
+      "Undefined success metrics",
+      "Insufficient competitive research"
+    ]
+  },
+  "integration_points": {
+    "next_phase_agents": {
+      "architect-mcp": "Passes requirements document for technical architecture design",
+      "builder-mcp": "Provides business context for component development",
+      "deploy-mcp": "Supplies hosting and performance requirements"
+    },
+    "data_flows": {
+      "input": "Business discovery questionnaire (JSON)",
+      "processing": "Requirements analysis and documentation generation",
+      "output": "Standardized Phase 1 requirements document (Markdown)"
+    }
+  }
+}

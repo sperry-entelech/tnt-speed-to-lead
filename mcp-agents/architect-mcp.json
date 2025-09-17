@@ -1,0 +1,416 @@
+{
+  "name": "architect-mcp",
+  "version": "1.0.0",
+  "description": "System architecture design agent for lead automation systems with database schemas, API specifications, and integration configurations",
+  "type": "mcp-agent",
+  "capabilities": [
+    "database-schema-design",
+    "api-specification-generation",
+    "integration-architecture",
+    "performance-optimization",
+    "security-architecture",
+    "scalability-planning"
+  ],
+  "input_schemas": {
+    "requirements_document": {
+      "type": "object",
+      "properties": {
+        "business_requirements": {
+          "type": "object",
+          "properties": {
+            "lead_volume": {"type": "number"},
+            "response_time_target": {"type": "string"},
+            "integration_systems": {"type": "array", "items": {"type": "string"}},
+            "user_roles": {"type": "array", "items": {"type": "string"}},
+            "performance_requirements": {"type": "object"}
+          }
+        },
+        "technical_constraints": {
+          "type": "object",
+          "properties": {
+            "existing_tech_stack": {"type": "array", "items": {"type": "string"}},
+            "hosting_preferences": {"type": "string"},
+            "security_requirements": {"type": "array", "items": {"type": "string"}},
+            "scalability_needs": {"type": "object"}
+          }
+        }
+      }
+    }
+  },
+  "output_schemas": {
+    "system_architecture": {
+      "type": "object",
+      "properties": {
+        "database_schemas": {"type": "object"},
+        "api_specifications": {"type": "object"},
+        "integration_configs": {"type": "object"},
+        "frontend_architecture": {"type": "object"},
+        "backend_architecture": {"type": "object"},
+        "deployment_architecture": {"type": "object"},
+        "security_architecture": {"type": "object"}
+      }
+    }
+  },
+  "database_design_patterns": {
+    "lead_management": {
+      "tables": {
+        "leads": {
+          "schema": {
+            "id": "UUID PRIMARY KEY",
+            "company_name": "VARCHAR(255)",
+            "contact_name": "VARCHAR(255)",
+            "email": "VARCHAR(255) UNIQUE",
+            "phone": "VARCHAR(50)",
+            "service_type": "ENUM('corporate', 'airport', 'wedding', 'hourly')",
+            "estimated_value": "DECIMAL(10,2)",
+            "lead_score": "INTEGER",
+            "status": "ENUM('new', 'contacted', 'qualified', 'converted', 'lost')",
+            "source": "VARCHAR(100)",
+            "created_at": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",
+            "updated_at": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
+          },
+          "indexes": [
+            "INDEX idx_created_at (created_at)",
+            "INDEX idx_status (status)",
+            "INDEX idx_lead_score (lead_score)",
+            "INDEX idx_company_name (company_name)"
+          ]
+        },
+        "lead_interactions": {
+          "schema": {
+            "id": "UUID PRIMARY KEY",
+            "lead_id": "UUID REFERENCES leads(id)",
+            "interaction_type": "ENUM('email_sent', 'email_opened', 'email_clicked', 'call_made', 'meeting_scheduled')",
+            "content": "TEXT",
+            "automated": "BOOLEAN DEFAULT false",
+            "created_at": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+          }
+        },
+        "automated_responses": {
+          "schema": {
+            "id": "UUID PRIMARY KEY",
+            "template_name": "VARCHAR(100)",
+            "subject_line": "VARCHAR(255)",
+            "content": "TEXT",
+            "trigger_conditions": "JSON",
+            "active": "BOOLEAN DEFAULT true",
+            "a_b_test_variant": "VARCHAR(50)"
+          }
+        }
+      }
+    },
+    "integration_tracking": {
+      "tables": {
+        "external_integrations": {
+          "schema": {
+            "id": "UUID PRIMARY KEY",
+            "service_name": "VARCHAR(100)",
+            "api_endpoint": "VARCHAR(255)",
+            "last_sync": "TIMESTAMP",
+            "sync_status": "ENUM('success', 'error', 'pending')",
+            "error_message": "TEXT",
+            "sync_frequency": "VARCHAR(50)"
+          }
+        },
+        "webhook_logs": {
+          "schema": {
+            "id": "UUID PRIMARY KEY",
+            "source": "VARCHAR(100)",
+            "payload": "JSON",
+            "processed": "BOOLEAN DEFAULT false",
+            "error_message": "TEXT",
+            "created_at": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+          }
+        }
+      }
+    }
+  },
+  "api_design_patterns": {
+    "rest_endpoints": {
+      "leads": {
+        "POST /api/leads": {
+          "description": "Create new lead from website form",
+          "request_body": {
+            "company_name": "string",
+            "contact_name": "string",
+            "email": "string",
+            "phone": "string",
+            "service_type": "string",
+            "estimated_value": "number",
+            "custom_fields": "object"
+          },
+          "response": {
+            "lead_id": "string",
+            "status": "string",
+            "automated_response_sent": "boolean"
+          },
+          "triggers": [
+            "Lead scoring calculation",
+            "Automated email response",
+            "Manager notification (if high-value)",
+            "CRM integration sync"
+          ]
+        },
+        "GET /api/leads": {
+          "description": "Retrieve leads with filtering and pagination",
+          "query_parameters": {
+            "status": "string",
+            "date_range": "string",
+            "lead_score_min": "number",
+            "page": "number",
+            "limit": "number"
+          }
+        },
+        "PUT /api/leads/:id": {
+          "description": "Update lead status and information",
+          "triggers": ["Status change notifications", "CRM sync update"]
+        }
+      },
+      "automation": {
+        "POST /api/automation/trigger": {
+          "description": "Manually trigger automation workflow",
+          "request_body": {
+            "lead_id": "string",
+            "workflow_type": "string",
+            "custom_parameters": "object"
+          }
+        },
+        "GET /api/automation/performance": {
+          "description": "Get automation performance metrics",
+          "response": {
+            "response_times": "object",
+            "conversion_rates": "object",
+            "email_engagement": "object"
+          }
+        }
+      }
+    },
+    "webhook_endpoints": {
+      "POST /webhooks/form-submission": {
+        "description": "Handle website form submissions",
+        "processing_flow": [
+          "Validate and sanitize input",
+          "Lead scoring algorithm execution",
+          "Automated response selection and sending",
+          "High-value lead notification",
+          "CRM integration data push"
+        ]
+      },
+      "POST /webhooks/email-engagement": {
+        "description": "Track email opens, clicks, and responses"
+      },
+      "POST /webhooks/crm-updates": {
+        "description": "Sync bidirectional updates with CRM system"
+      }
+    }
+  },
+  "integration_architectures": {
+    "zoho_crm": {
+      "connection_type": "REST API",
+      "authentication": "OAuth 2.0",
+      "sync_frequency": "Real-time + 15-minute batch",
+      "data_mappings": {
+        "leads_table": "Zoho Leads module",
+        "lead_interactions": "Zoho Activities",
+        "automated_responses": "Zoho Email Templates"
+      },
+      "webhook_configuration": {
+        "lead_created": "POST /webhooks/crm-updates",
+        "lead_updated": "POST /webhooks/crm-updates",
+        "deal_closed": "POST /webhooks/crm-updates"
+      }
+    },
+    "fasttrack_invision": {
+      "connection_type": "API + Database Integration",
+      "sync_requirements": [
+        "Customer profile synchronization",
+        "Booking status updates",
+        "Vehicle availability checking",
+        "Trip assignment automation"
+      ],
+      "data_flows": {
+        "lead_to_customer": "Qualified leads → FastTrack customer records",
+        "booking_updates": "FastTrack bookings → Lead conversion tracking",
+        "availability_check": "Real-time vehicle availability for quote generation"
+      }
+    },
+    "email_automation": {
+      "provider": "richweb.net SMTP",
+      "features": [
+        "Template-based automated responses",
+        "Delivery tracking and analytics",
+        "A/B testing capability",
+        "Personalization engine"
+      ],
+      "configuration": {
+        "smtp_settings": {
+          "host": "mail.richweb.net",
+          "port": 587,
+          "security": "STARTTLS",
+          "authentication": "required"
+        },
+        "tracking": {
+          "open_tracking": true,
+          "click_tracking": true,
+          "bounce_handling": true,
+          "unsubscribe_management": true
+        }
+      }
+    }
+  },
+  "frontend_architecture": {
+    "technology_stack": {
+      "framework": "Next.js 14",
+      "ui_library": "shadcn/ui + Tailwind CSS",
+      "state_management": "Zustand",
+      "data_fetching": "TanStack Query",
+      "charts": "Recharts",
+      "forms": "React Hook Form + Zod"
+    },
+    "component_structure": {
+      "dashboard_components": [
+        "LeadNotificationCenter",
+        "ProspectScoringWidget",
+        "RevenuePipelineChart",
+        "ResponseTimeAnalytics",
+        "CompetitiveAnalysisPanel"
+      ],
+      "dispatcher_components": [
+        "ConversionTracker",
+        "CommunicationHistory",
+        "VehicleAssignmentInterface",
+        "FollowUpTaskManager"
+      ],
+      "shared_components": [
+        "DataTable",
+        "MetricsCard",
+        "DateRangePicker",
+        "NotificationToast",
+        "ConfirmationModal"
+      ]
+    },
+    "routing_structure": {
+      "/dashboard": "Main analytics and overview",
+      "/leads": "Lead management and tracking",
+      "/automation": "Automation settings and performance",
+      "/integrations": "Third-party system connections",
+      "/settings": "User preferences and configuration"
+    }
+  },
+  "backend_architecture": {
+    "technology_stack": {
+      "runtime": "Node.js 18+",
+      "framework": "Express.js",
+      "database": "PostgreSQL 15",
+      "orm": "Prisma",
+      "queue_system": "Bull Queue (Redis)",
+      "cache": "Redis",
+      "email": "Nodemailer + richweb.net SMTP"
+    },
+    "service_architecture": {
+      "lead_service": {
+        "responsibilities": [
+          "Lead creation and validation",
+          "Scoring algorithm execution",
+          "Status management and updates"
+        ]
+      },
+      "automation_service": {
+        "responsibilities": [
+          "Email template selection and sending",
+          "Workflow trigger management",
+          "Performance tracking and analytics"
+        ]
+      },
+      "integration_service": {
+        "responsibilities": [
+          "Third-party API communication",
+          "Data synchronization",
+          "Webhook processing"
+        ]
+      },
+      "notification_service": {
+        "responsibilities": [
+          "High-value lead alerts",
+          "Manager SMS notifications",
+          "Slack integration messaging"
+        ]
+      }
+    }
+  },
+  "deployment_architecture": {
+    "hosting_options": {
+      "recommended": "Vercel (Frontend) + Railway/Render (Backend)",
+      "enterprise": "Azure App Service + Azure Database for PostgreSQL",
+      "self_hosted": "Docker containers on VPS"
+    },
+    "performance_requirements": {
+      "response_time": "<3 seconds for dashboard loads",
+      "api_latency": "<500ms for lead creation",
+      "email_delivery": "<5 minutes guaranteed",
+      "uptime": "99.9% availability"
+    },
+    "security_configuration": {
+      "ssl_certificates": "Let's Encrypt or Azure-managed",
+      "data_encryption": "AES-256 at rest, TLS 1.3 in transit",
+      "authentication": "JWT tokens + refresh token rotation",
+      "authorization": "Role-based access control (RBAC)"
+    }
+  },
+  "monitoring_and_observability": {
+    "metrics_tracking": [
+      "Lead response time (target: <5 minutes)",
+      "Email delivery rates and engagement",
+      "API performance and error rates",
+      "Database query performance",
+      "Integration sync status and latency"
+    ],
+    "alerting_rules": [
+      "Lead response time >10 minutes",
+      "Email delivery failure rate >5%",
+      "API error rate >1%",
+      "Database connection failures",
+      "Integration sync failures"
+    ],
+    "dashboard_kpis": [
+      "Daily lead volume and conversion rates",
+      "Revenue pipeline value and progression",
+      "Automation performance metrics",
+      "System health and uptime status"
+    ]
+  },
+  "output_file_structure": {
+    "phase2_architecture": {
+      "database/": [
+        "schema.sql",
+        "migrations/",
+        "seed_data.sql"
+      ],
+      "api/": [
+        "openapi.yaml",
+        "endpoints.md",
+        "authentication.md"
+      ],
+      "integrations/": [
+        "zoho_crm_config.json",
+        "fasttrack_integration.md",
+        "email_automation_setup.md"
+      ],
+      "frontend/": [
+        "component_specifications.md",
+        "routing_structure.md",
+        "state_management.md"
+      ],
+      "backend/": [
+        "service_architecture.md",
+        "queue_configuration.md",
+        "environment_variables.md"
+      ],
+      "deployment/": [
+        "hosting_requirements.md",
+        "performance_benchmarks.md",
+        "security_checklist.md"
+      ]
+    }
+  }
+}
