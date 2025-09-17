@@ -1,8 +1,8 @@
-# TNT Corporate Lead Automation System
+# TNT Speed-to-Lead Automation System
 
 ## 6-Phase Implementation Framework for Transportation & Service Businesses
 
-This repository contains a complete 6-phase automation system designed for TNT Limousine and serves as a reusable template for transportation and service businesses.
+This repository contains a complete 6-phase Speed-to-Lead automation system designed for TNT Limousine and serves as a reusable template for transportation and service businesses.
 
 ### Business Problem Solved
 - **Revenue Impact**: Eliminates $15K+ monthly revenue loss from delayed lead responses
@@ -94,5 +94,5 @@ This system serves as:
 ---
 
 **Contact**: Sperry Entelech
-**Repository**: https://github.com/sperry-entelech/tnt-corporate-lead-system
+**Repository**: https://github.com/sperry-entelech/tnt-speed-to-lead
 **Live Demo**: [Coming in Phase 4]
