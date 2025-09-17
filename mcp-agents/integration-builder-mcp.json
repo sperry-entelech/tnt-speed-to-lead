@@ -1,0 +1,296 @@
+{
+  "name": "integration-builder-mcp",
+  "version": "1.0.0",
+  "description": "Integration builder for TNT Speed-to-Lead external system connections with Zoho CRM, FastTrack InVision, and SMTP",
+  "type": "mcp-agent",
+  "capabilities": [
+    "crm-integration",
+    "dispatch-software-integration",
+    "email-automation-integration",
+    "webhook-management",
+    "real-time-synchronization",
+    "roi-calculator-integration"
+  ],
+  "integration_specifications": {
+    "zoho_crm": {
+      "purpose": "Bidirectional lead and customer relationship management",
+      "connection_type": "REST API + OAuth 2.0",
+      "sync_frequency": "real_time",
+      "data_flows": {
+        "outbound": [
+          "new_lead_creation",
+          "lead_status_updates",
+          "interaction_logging",
+          "conversion_tracking"
+        ],
+        "inbound": [
+          "lead_status_changes",
+          "deal_closed_notifications",
+          "contact_updates",
+          "pipeline_changes"
+        ]
+      },
+      "field_mappings": {
+        "tnt_to_zoho": {
+          "company_name": "Company",
+          "contact_name": "Last_Name",
+          "email": "Email",
+          "phone": "Phone",
+          "service_type": "Service_Type__c",
+          "estimated_value": "Deal_Value__c",
+          "lead_score": "Lead_Score__c",
+          "source": "Lead_Source",
+          "pickup_location": "Pickup_Location__c",
+          "destination": "Destination__c",
+          "service_date": "Service_Date__c"
+        }
+      },
+      "automation_triggers": {
+        "lead_created": "create_zoho_lead",
+        "lead_qualified": "move_to_opportunity",
+        "lead_converted": "create_deal_record",
+        "lead_lost": "update_status_lost"
+      }
+    },
+    "fasttrack_invision": {
+      "purpose": "Dispatch software integration for booking and customer management",
+      "connection_type": "REST API + API Key",
+      "sync_frequency": "15_minutes",
+      "features": [
+        "customer_profile_sync",
+        "booking_status_updates",
+        "vehicle_availability_check",
+        "trip_assignment_automation"
+      ],
+      "data_exchanges": {
+        "customer_creation": {
+          "trigger": "qualified_lead",
+          "mapping": {
+            "company_name": "company_name",
+            "contact_name": "contact_name",
+            "email": "email_address",
+            "phone": "phone_number",
+            "service_preferences": "notes"
+          }
+        },
+        "booking_sync": {
+          "trigger": "lead_converted",
+          "booking_data": [
+            "pickup_address",
+            "destination_address",
+            "service_date",
+            "passenger_count",
+            "vehicle_type",
+            "estimated_duration"
+          ]
+        }
+      },
+      "vehicle_selection_logic": {
+        "passenger_count_1_3": "sedan",
+        "passenger_count_4_7": "suv",
+        "passenger_count_8_plus": "van",
+        "service_type_wedding": "luxury_suv",
+        "service_type_corporate": "luxury_sedan"
+      }
+    },
+    "richweb_smtp": {
+      "purpose": "Email automation and delivery with TNT branding",
+      "connection_type": "SMTP + API",
+      "delivery_guarantee": "< 5_minutes",
+      "features": [
+        "branded_template_delivery",
+        "engagement_tracking",
+        "bounce_handling",
+        "unsubscribe_management"
+      ],
+      "email_templates": {
+        "corporate_instant_response": {
+          "subject": "TNT Limousine - Your Transportation Request [5-Minute Response]",
+          "trigger": "corporate_lead_received",
+          "personalization": ["company_name", "contact_name", "service_type"],
+          "cta_buttons": ["Get_Quote", "View_Fleet", "Contact_Manager"]
+        },
+        "airport_service_quote": {
+          "subject": "TNT Airport Transportation - Competitive Pricing & Reliability",
+          "trigger": "airport_service_inquiry",
+          "pricing_display": true,
+          "competitor_comparison": true
+        },
+        "follow_up_sequence": {
+          "day_3": "Additional service information and case studies",
+          "day_7": "Special offers and volume discounts",
+          "day_14": "Final outreach with alternative solutions"
+        }
+      },
+      "tracking_configuration": {
+        "open_tracking": true,
+        "click_tracking": true,
+        "bounce_tracking": true,
+        "reply_tracking": true,
+        "unsubscribe_tracking": true
+      }
+    },
+    "website_webhook": {
+      "purpose": "Real-time lead capture from TNT website forms",
+      "endpoint": "/webhooks/form-submission",
+      "processing_pipeline": [
+        "input_validation",
+        "spam_filtering",
+        "duplicate_detection",
+        "lead_scoring",
+        "database_insertion",
+        "automated_response_trigger",
+        "notification_dispatch"
+      ],
+      "form_field_mapping": {
+        "required_fields": ["contact_name", "email", "service_type"],
+        "optional_fields": ["company_name", "phone", "pickup_location", "destination", "service_date", "passenger_count"],
+        "hidden_fields": ["source", "utm_source", "utm_medium", "utm_campaign", "referrer_url"]
+      },
+      "response_time_monitoring": {
+        "target": "< 5_minutes",
+        "alerts": {
+          "warning": "> 3_minutes",
+          "critical": "> 5_minutes"
+        }
+      }
+    },
+    "roi_calculator": {
+      "purpose": "Competitive analysis and value proposition calculator",
+      "comparison_data": {
+        "competitors": {
+          "richmond_limousine": {
+            "airport_bwi": 650,
+            "airport_dulles": 450,
+            "airport_national": 440,
+            "hourly_rate_range": [140, 200]
+          },
+          "james_limousine": {
+            "pricing_structure": "similar_to_richmond",
+            "specialization": "wedding_market"
+          }
+        },
+        "tnt_advantages": {
+          "airport_bwi": 657,
+          "airport_dulles": 460,
+          "airport_national": 450,
+          "hourly_rate_range": [100, 208],
+          "differentiators": [
+            "National Limousine Association member since 1992",
+            "Trust Analytica Top 10 Richmond limousine company (2025)",
+            "17 employees with experienced drivers (15+ years)",
+            "Certified airport access (Richmond, Dulles, Reagan, BWI)",
+            "Superior vehicle quality and driver experience",
+            "Faster response times with automation"
+          ]
+        }
+      },
+      "calculation_components": {
+        "cost_savings": [
+          "fuel_cost_vs_self_drive",
+          "parking_fee_elimination",
+          "time_value_optimization",
+          "group_transportation_efficiency"
+        ],
+        "service_premium": [
+          "professional_driver_safety",
+          "vehicle_quality_maintenance",
+          "24_7_availability",
+          "on_time_performance_guarantee"
+        ]
+      }
+    },
+    "notification_integrations": {
+      "slack": {
+        "webhook_url": "env:SLACK_WEBHOOK_URL",
+        "channels": {
+          "high_value_leads": "#tnt-leads",
+          "system_alerts": "#tnt-alerts",
+          "daily_reports": "#tnt-reports"
+        },
+        "message_formatting": {
+          "high_value_lead": {
+            "color": "danger",
+            "pretext": "🚨 *HIGH VALUE LEAD ALERT* 🚨",
+            "fields": ["company", "contact", "estimated_value", "lead_score", "service_date"]
+          }
+        }
+      },
+      "sms": {
+        "provider": "twilio",
+        "triggers": {
+          "high_value_lead": "estimated_value >= 1000",
+          "weekend_lead": "created_on_weekend",
+          "after_hours_lead": "created_after_business_hours"
+        },
+        "message_templates": {
+          "high_value_alert": "🚨 TNT HIGH VALUE LEAD\nCompany: {company_name}\nContact: {contact_name}\nValue: ${estimated_value}\nScore: {lead_score}/100\nView: {dashboard_url}/leads/{lead_id}"
+        }
+      }
+    }
+  },
+  "synchronization_engine": {
+    "real_time_events": [
+      "lead_created",
+      "lead_updated",
+      "interaction_logged",
+      "email_engagement",
+      "booking_confirmed"
+    ],
+    "batch_processes": {
+      "crm_sync": {
+        "frequency": "every_15_minutes",
+        "batch_size": 50,
+        "retry_logic": "exponential_backoff"
+      },
+      "customer_profile_sync": {
+        "frequency": "hourly",
+        "conflict_resolution": "timestamp_based"
+      }
+    },
+    "error_handling": {
+      "retry_attempts": 3,
+      "failure_notifications": true,
+      "fallback_strategies": ["queue_for_manual_review", "log_and_continue"]
+    }
+  },
+  "competitive_messaging": {
+    "tnt_value_propositions": [
+      "33 years of transportation excellence in Richmond",
+      "National Limousine Association member since 1992",
+      "Trust Analytica Top 10 Richmond limousine company (2025)",
+      "Experienced chauffeurs with 15+ years average experience",
+      "Certified airport access to all major airports",
+      "Superior vehicle quality and maintenance standards",
+      "24/7 availability and real-time tracking",
+      "Faster response times through automation"
+    ],
+    "response_time_advantage": {
+      "tnt_guarantee": "< 5_minutes_automated_response",
+      "industry_average": "24-48_hours",
+      "weekend_coverage": "24_7_automated_system"
+    },
+    "pricing_transparency": {
+      "airport_services": {
+        "bwi": "$657 (vs Richmond Limo $650)",
+        "dulles": "$460 (vs Richmond Limo $450)",
+        "national": "$450 (vs Richmond Limo $440)"
+      },
+      "value_messaging": "Competitive pricing with superior service quality"
+    }
+  },
+  "monitoring_and_analytics": {
+    "integration_health": {
+      "connection_status": "real_time_monitoring",
+      "response_times": "performance_tracking",
+      "error_rates": "threshold_alerting",
+      "data_sync_accuracy": "validation_checks"
+    },
+    "business_metrics": {
+      "lead_response_times": "< 5_minute_target",
+      "email_delivery_rates": "> 98%_target",
+      "crm_sync_success": "> 99%_target",
+      "conversion_attribution": "source_to_revenue_tracking"
+    }
+  }
+}

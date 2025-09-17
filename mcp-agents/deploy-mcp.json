@@ -1,0 +1,303 @@
+{
+  "name": "deploy-mcp",
+  "version": "1.0.0",
+  "description": "Production deployment agent for TNT Speed-to-Lead system with hosting, SSL, email configuration, and monitoring setup",
+  "type": "mcp-agent",
+  "capabilities": [
+    "production-hosting-setup",
+    "ssl-certificate-management",
+    "email-provider-configuration",
+    "database-initialization",
+    "dns-configuration",
+    "monitoring-setup",
+    "performance-optimization"
+  ],
+  "deployment_specifications": {
+    "hosting_environment": {
+      "primary_option": {
+        "provider": "Vercel + Railway",
+        "frontend": {
+          "platform": "Vercel",
+          "domain": "leads.tntlimousine.com",
+          "ssl": "automatic_lets_encrypt",
+          "cdn": "global_edge_network",
+          "performance": "sub_3_second_loads"
+        },
+        "backend": {
+          "platform": "Railway",
+          "api_endpoint": "api.tntlimousine.com",
+          "database": "PostgreSQL 15",
+          "redis": "queue_and_cache",
+          "auto_scaling": true
+        }
+      },
+      "alternative_option": {
+        "provider": "Azure Enterprise",
+        "frontend": "Azure Static Web Apps",
+        "backend": "Azure App Service",
+        "database": "Azure Database for PostgreSQL",
+        "cdn": "Azure Front Door"
+      }
+    },
+    "domain_configuration": {
+      "primary_domain": "tntlimousine.com",
+      "subdomains": {
+        "leads": "leads.tntlimousine.com",
+        "api": "api.tntlimousine.com",
+        "status": "status.tntlimousine.com"
+      },
+      "dns_requirements": [
+        "CNAME leads -> vercel-deployment",
+        "CNAME api -> railway-deployment",
+        "A record for root domain",
+        "MX records for email"
+      ]
+    },
+    "ssl_configuration": {
+      "certificate_type": "Let's Encrypt Wildcard",
+      "auto_renewal": true,
+      "tls_version": "1.3_minimum",
+      "security_headers": [
+        "HSTS",
+        "Content-Security-Policy",
+        "X-Frame-Options",
+        "X-Content-Type-Options"
+      ]
+    }
+  },
+  "email_configuration": {
+    "research_priorities": [
+      "identify_current_tnt_email_provider",
+      "smtp_server_capabilities",
+      "existing_email_addresses",
+      "brand_guidelines_compliance"
+    ],
+    "provider_options": {
+      "option_1_current_provider": {
+        "investigation": "Contact TNT IT to identify current email hosting",
+        "benefits": "Seamless integration with existing infrastructure",
+        "requirements": "SMTP credentials for automated@tntlimousine.com"
+      },
+      "option_2_gmail_workspace": {
+        "provider": "Google Workspace",
+        "email": "system@tntlimousine.com",
+        "smtp_config": {
+          "host": "smtp.gmail.com",
+          "port": 587,
+          "security": "STARTTLS",
+          "authentication": "OAuth2"
+        },
+        "monthly_cost": "$6_per_user"
+      },
+      "option_3_microsoft_365": {
+        "provider": "Microsoft 365 Business",
+        "email": "automated@tntlimousine.com",
+        "smtp_config": {
+          "host": "smtp.office365.com",
+          "port": 587,
+          "security": "STARTTLS"
+        },
+        "monthly_cost": "$8_per_user"
+      },
+      "option_4_dedicated_smtp": {
+        "provider": "SendGrid Enterprise",
+        "purpose": "Dedicated transactional email",
+        "benefits": "High deliverability, detailed analytics",
+        "monthly_cost": "$89_for_100k_emails"
+      }
+    },
+    "email_addresses_needed": [
+      "automated@tntlimousine.com",
+      "noreply@tntlimousine.com",
+      "system@tntlimousine.com",
+      "alerts@tntlimousine.com"
+    ]
+  },
+  "database_initialization": {
+    "production_database": {
+      "engine": "PostgreSQL 15",
+      "size": "4GB RAM, 50GB Storage",
+      "backup_strategy": "Daily automated backups",
+      "connection_pooling": true,
+      "ssl_required": true
+    },
+    "richmond_competitor_data": {
+      "richmond_limousine": {
+        "company_name": "Richmond Limousine",
+        "airport_bwi_price": 650,
+        "airport_dulles_price": 450,
+        "airport_national_price": 440,
+        "hourly_rate_min": 140,
+        "hourly_rate_max": 200,
+        "specialization": "General transportation",
+        "response_time": "24-48 hours"
+      },
+      "james_limousine": {
+        "company_name": "James Limousine",
+        "pricing_structure": "Similar to Richmond Limousine",
+        "specialization": "Wedding market focus",
+        "response_time": "24-72 hours"
+      },
+      "love_limousine": {
+        "company_name": "Love Limousine",
+        "market_position": "Local competitor",
+        "response_time": "Manual processing"
+      },
+      "tnt_advantages": {
+        "airport_bwi_price": 657,
+        "airport_dulles_price": 460,
+        "airport_national_price": 450,
+        "hourly_rate_min": 100,
+        "hourly_rate_max": 208,
+        "nla_member_since": 1992,
+        "trust_analytica_ranking": "Top 10 Richmond (2025)",
+        "driver_experience": "15+ years average",
+        "airport_certifications": ["RIC", "DCA", "IAD", "BWI"],
+        "response_time": "<5 minutes automated",
+        "coverage": "24/7 including weekends"
+      }
+    }
+  },
+  "tnt_branding_specifications": {
+    "brand_colors": {
+      "primary_black": "#000000",
+      "secondary_red": "#DC2626",
+      "accent_white": "#FFFFFF",
+      "gray_text": "#6B7280"
+    },
+    "messaging": {
+      "primary_tagline": "Driven by Service, Defined by Excellence",
+      "years_experience": "33 years of transportation excellence",
+      "key_differentiators": [
+        "Richmond's most experienced chauffeurs",
+        "National Limousine Association member since 1992",
+        "Trust Analytica Top 10 Richmond limousine company",
+        "Certified airport access to all major airports"
+      ]
+    },
+    "email_templates": {
+      "corporate_instant_response": {
+        "subject": "TNT Limousine - Your Transportation Request [5-Minute Response]",
+        "from_name": "TNT Limousine",
+        "from_email": "automated@tntlimousine.com",
+        "reply_to": "info@tntlimousine.com",
+        "template_variables": [
+          "contact_name",
+          "company_name",
+          "service_type",
+          "estimated_value",
+          "service_date"
+        ]
+      },
+      "airport_service_quote": {
+        "subject": "TNT Airport Transportation - Competitive Pricing & Reliability",
+        "include_pricing": true,
+        "competitor_comparison": true
+      },
+      "follow_up_sequence": {
+        "day_3": "Additional service information and case studies",
+        "day_7": "Special offers and volume discounts",
+        "day_14": "Final outreach with alternative solutions"
+      }
+    }
+  },
+  "monitoring_setup": {
+    "uptime_monitoring": {
+      "service": "Uptime Robot",
+      "check_frequency": "1_minute",
+      "alert_channels": ["email", "sms", "slack"]
+    },
+    "performance_monitoring": {
+      "service": "Sentry",
+      "error_tracking": true,
+      "performance_tracking": true,
+      "alert_thresholds": {
+        "response_time": "> 2_seconds",
+        "error_rate": "> 1%",
+        "memory_usage": "> 80%"
+      }
+    },
+    "business_metrics": {
+      "lead_response_time": "< 5_minutes_target",
+      "email_delivery_rate": "> 98%_target",
+      "conversion_tracking": "real_time",
+      "revenue_attribution": "source_to_booking"
+    }
+  },
+  "security_configuration": {
+    "firewall_rules": [
+      "Allow HTTP/HTTPS traffic only",
+      "Block direct database access",
+      "Rate limiting on API endpoints"
+    ],
+    "environment_variables": {
+      "database_encryption": "AES_256",
+      "api_key_rotation": "90_days",
+      "session_management": "secure_jwt"
+    },
+    "backup_strategy": {
+      "database_backups": "Daily at 2AM EST",
+      "application_backups": "Git version control",
+      "retention_period": "30_days"
+    }
+  },
+  "integration_endpoints": {
+    "fasttrack_invision": {
+      "staging_endpoint": "Required from TNT",
+      "production_endpoint": "Required from TNT",
+      "api_credentials": "Required from TNT"
+    },
+    "zoho_crm": {
+      "oauth_setup": "Required - TNT Zoho admin access",
+      "webhook_configuration": "Bidirectional sync",
+      "data_mapping": "As per Phase 2 specifications"
+    },
+    "website_integration": {
+      "form_webhook": "https://api.tntlimousine.com/webhooks/form-submission",
+      "tracking_scripts": "Google Analytics + TNT custom tracking"
+    }
+  },
+  "deployment_checklist": {
+    "pre_deployment": [
+      "Domain DNS configuration completed",
+      "SSL certificates generated and verified",
+      "Database schema deployed and tested",
+      "Email provider configured and tested",
+      "Integration credentials validated",
+      "Environment variables secured"
+    ],
+    "deployment": [
+      "Frontend deployed to Vercel",
+      "Backend deployed to Railway",
+      "Database initialized with competitor data",
+      "Email templates uploaded and tested",
+      "Monitoring services activated",
+      "Security configurations applied"
+    ],
+    "post_deployment": [
+      "End-to-end testing completed",
+      "Performance benchmarks verified",
+      "Backup systems tested",
+      "Alert systems tested",
+      "Documentation updated",
+      "TNT team training scheduled"
+    ]
+  },
+  "cost_estimates": {
+    "monthly_hosting": {
+      "vercel_pro": "$20",
+      "railway_pro": "$20",
+      "database_hosting": "$25",
+      "email_service": "$15",
+      "monitoring": "$25",
+      "ssl_certificates": "$0 (Let's Encrypt)",
+      "total": "$105/month"
+    },
+    "setup_costs": {
+      "domain_configuration": "$0 (TNT owns domain)",
+      "initial_deployment": "$0 (automated)",
+      "testing_and_validation": "$0 (included)",
+      "total": "$0 one-time"
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "name": "frontend-builder-mcp",
+  "version": "1.0.0",
+  "description": "Frontend component builder for TNT Speed-to-Lead dashboard with React, TNT branding, and mobile-responsive design",
+  "type": "mcp-agent",
+  "capabilities": [
+    "react-component-generation",
+    "dashboard-development",
+    "tnt-brand-styling",
+    "mobile-responsive-design",
+    "authentication-integration",
+    "real-time-notifications"
+  ],
+  "input_schemas": {
+    "dashboard_requirements": {
+      "type": "object",
+      "properties": {
+        "brand_guidelines": {
+          "type": "object",
+          "properties": {
+            "colors": {"type": "object", "default": {"primary": "#000000", "secondary": "#DC143C", "accent": "#FFFFFF"}},
+            "logo": {"type": "string", "default": "TNT lettering"},
+            "mission": {"type": "string", "default": "Driven by Service, Defined by Excellence"},
+            "messaging_tone": {"type": "string", "default": "Professional, reliable, experienced"}
+          }
+        },
+        "user_roles": {
+          "type": "array",
+          "items": {"type": "string"},
+          "default": ["admin", "manager", "dispatcher"]
+        },
+        "dashboard_components": {
+          "type": "array",
+          "items": {"type": "string"},
+          "default": [
+            "LeadNotificationCenter",
+            "ProspectScoringWidget",
+            "RevenuePipelineChart",
+            "ResponseTimeAnalytics",
+            "CompetitiveAnalysisPanel"
+          ]
+        }
+      }
+    }
+  },
+  "component_templates": {
+    "manager_dashboard": {
+      "layout": "grid-responsive",
+      "sections": [
+        {
+          "name": "header",
+          "components": ["TNTBrandHeader", "UserProfileDropdown", "NotificationBell"]
+        },
+        {
+          "name": "metrics_overview",
+          "components": ["TodayMetrics", "WeeklyTrends", "MonthlyRevenue"]
+        },
+        {
+          "name": "lead_management",
+          "components": ["HighPriorityLeads", "RecentInquiries", "ConversionFunnel"]
+        },
+        {
+          "name": "performance_analytics",
+          "components": ["ResponseTimeChart", "ConversionRates", "RevenueProjection"]
+        }
+      ]
+    },
+    "dispatcher_interface": {
+      "layout": "sidebar-main",
+      "sections": [
+        {
+          "name": "sidebar",
+          "components": ["LeadQueue", "QuickActions", "StatusFilters"]
+        },
+        {
+          "name": "main_content",
+          "components": ["LeadDetailsView", "CommunicationHistory", "BookingAssignment"]
+        },
+        {
+          "name": "action_panel",
+          "components": ["ResponseTemplates", "FollowUpScheduler", "NotesEditor"]
+        }
+      ]
+    }
+  },
+  "styling_framework": {
+    "css_framework": "Tailwind CSS",
+    "component_library": "shadcn/ui",
+    "design_tokens": {
+      "colors": {
+        "tnt-black": "#000000",
+        "tnt-red": "#DC143C",
+        "tnt-white": "#FFFFFF",
+        "tnt-gray": "#6B7280",
+        "success": "#10B981",
+        "warning": "#F59E0B",
+        "error": "#EF4444"
+      },
+      "typography": {
+        "brand_font": "Inter",
+        "heading_weight": "600",
+        "body_weight": "400"
+      },
+      "spacing": {
+        "container_max": "1200px",
+        "section_gap": "2rem",
+        "component_gap": "1rem"
+      }
+    }
+  },
+  "authentication_features": {
+    "login_flow": {
+      "method": "email_password",
+      "mfa_required": false,
+      "session_duration": "8_hours",
+      "auto_logout": true
+    },
+    "role_permissions": {
+      "admin": {
+        "leads": ["create", "read", "update", "delete"],
+        "users": ["create", "read", "update", "delete"],
+        "settings": ["read", "update"],
+        "analytics": ["read"]
+      },
+      "manager": {
+        "leads": ["create", "read", "update"],
+        "analytics": ["read"],
+        "automation": ["read", "update"]
+      },
+      "dispatcher": {
+        "leads": ["read", "update"],
+        "interactions": ["create", "read"]
+      }
+    }
+  },
+  "real_time_features": {
+    "websocket_events": [
+      "new_lead_alert",
+      "high_value_notification",
+      "response_time_warning",
+      "conversion_update",
+      "system_status_change"
+    ],
+    "notification_types": {
+      "toast": ["info", "success", "warning", "error"],
+      "modal": ["high_priority_lead", "system_alert"],
+      "badge": ["unread_count", "pending_actions"]
+    }
+  },
+  "mobile_responsive": {
+    "breakpoints": {
+      "mobile": "640px",
+      "tablet": "768px",
+      "desktop": "1024px",
+      "wide": "1280px"
+    },
+    "mobile_adaptations": {
+      "navigation": "bottom_tabs",
+      "tables": "horizontal_scroll",
+      "charts": "simplified_view",
+      "forms": "single_column"
+    }
+  }
+}

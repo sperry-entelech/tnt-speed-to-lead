@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TNT Limousine Email Templates</title>
+    <style>
+        /* TNT Branding Styles */
+        .tnt-email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .tnt-header {
+            background: linear-gradient(135deg, #000000 0%, #DC2626 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .tnt-logo {
+            font-family: 'Arial Black', Arial, sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .tnt-tagline {
+            font-style: italic;
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0.95;
+            letter-spacing: 1px;
+        }
+
+        .tnt-content {
+            padding: 30px 20px;
+            line-height: 1.7;
+            color: #333333;
+        }
+
+        .tnt-advantages {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 6px solid #DC2626;
+            border-radius: 5px;
+        }
+
+        .tnt-advantages h3 {
+            color: #000000;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .tnt-advantages ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .tnt-advantages li {
+            margin-bottom: 8px;
+            color: #555555;
+        }
+
+        .tnt-advantages strong {
+            color: #DC2626;
+        }
+
+        .tnt-pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .tnt-pricing-table th {
+            background: linear-gradient(135deg, #000000 0%, #333333 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .tnt-pricing-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tnt-pricing-table .tnt-price {
+            font-weight: bold;
+            color: #DC2626;
+            font-size: 18px;
+        }
+
+        .tnt-pricing-table .competitor-price {
+            color: #666666;
+            text-decoration: line-through;
+        }
+
+        .tnt-cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            margin: 10px 5px;
+            box-shadow: 0 4px 8px rgba(220, 38, 38, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tnt-cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(220, 38, 38, 0.4);
+        }
+
+        .tnt-service-details {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .tnt-footer {
+            background: #333333;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .tnt-footer .company-info {
+            margin-bottom: 15px;
+        }
+
+        .tnt-footer .contact-info {
+            margin-bottom: 10px;
+        }
+
+        .tnt-footer .tagline {
+            font-style: italic;
+            color: #DC2626;
+            margin-top: 15px;
+        }
+
+        .tnt-credentials {
+            background: linear-gradient(135deg, #000000 0%, #1f2937 100%);
+            color: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .tnt-credentials .credential-item {
+            display: inline-block;
+            margin: 5px 15px;
+            padding: 8px 12px;
+            background: rgba(220, 38, 38, 0.2);
+            border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid #DC2626;
+        }
+
+        /* Mobile Responsive */
+        @media screen and (max-width: 600px) {
+            .tnt-email-container {
+                width: 100% !important;
+                margin: 0 !important;
+            }
+
+            .tnt-content {
+                padding: 20px 15px !important;
+            }
+
+            .tnt-logo {
+                font-size: 28px !important;
+            }
+
+            .tnt-cta-button {
+                display: block !important;
+                margin: 10px 0 !important;
+            }
+
+            .tnt-pricing-table {
+                font-size: 14px !important;
+            }
+
+            .tnt-pricing-table th,
+            .tnt-pricing-table td {
+                padding: 8px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 20px; background-color: #f5f5f5;">
+
+<!-- =====================================================
+     TEMPLATE 1: CORPORATE INSTANT RESPONSE
+     ===================================================== -->
+
+<div class="tnt-email-container" id="corporate-instant-response">
+    <div class="tnt-header">
+        <div class="tnt-logo">TNT LIMOUSINE</div>
+        <div class="tnt-tagline">Driven by Service, Defined by Excellence</div>
+    </div>
+
+    <div class="tnt-content">
+        <h2 style="color: #000000; margin-top: 0;">Your Transportation Request [5-Minute Response]</h2>
+
+        <p>Dear <strong>{{contact_name}}</strong>,</p>
+
+        <p>Thank you for contacting TNT Limousine for your <strong>{{service_type}}</strong> transportation needs. We have received your inquiry and a member of our experienced team will contact you within the next <strong style="color: #DC2626;">5 minutes</strong>.</p>
+
+        <div class="tnt-advantages">
+            <h3>Why Choose TNT Limousine?</h3>
+            <ul>
+                <li><strong>33 years of excellence</strong> - Serving Richmond since 1992</li>
+                <li><strong>National Limousine Association member</strong> - Industry certified since 1992</li>
+                <li><strong>Trust Analytica Top 10</strong> - Richmond limousine company (2025)</li>
+                <li><strong>Experienced chauffeurs</strong> - 15+ years average experience</li>
+                <li><strong>Airport certified</strong> - Authorized access to RIC, DCA, IAD, BWI</li>
+                <li><strong>Competitive pricing</strong> - Superior service quality</li>
+                <li><strong>24/7 availability</strong> - Including weekends and holidays</li>
+            </ul>
+        </div>
+
+        <div class="tnt-service-details">
+            <h3 style="color: #000000; margin-top: 0;">Your Service Details:</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li><strong>Service Type:</strong> {{service_type}}</li>
+                <li><strong>Date:</strong> {{service_date}}</li>
+                <li><strong>Estimated Value:</strong> ${{estimated_value}}</li>
+                <li><strong>Pickup Location:</strong> {{pickup_location}}</li>
+                <li><strong>Destination:</strong> {{destination}}</li>
+            </ul>
+        </div>
+
+        <div class="tnt-credentials">
+            <div style="margin-bottom: 10px; font-weight: bold;">Our Credentials & Certifications:</div>
+            <span class="credential-item">NLA Member Since 1992</span>
+            <span class="credential-item">Trust Analytica Top 10</span>
+            <span class="credential-item">Airport Authority Certified</span>
+            <span class="credential-item">15+ Years Avg. Experience</span>
+            <span class="credential-item">$5M Liability Coverage</span>
+        </div>
+
+        <p>We will contact you shortly at <strong>{{phone}}</strong> to discuss your requirements and provide detailed pricing. In the meantime, you can:</p>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://leads.tntlimousine.com/quote/{{lead_id}}" class="tnt-cta-button">View Your Quote</a>
+            <a href="https://tntlimousine.com/fleet" class="tnt-cta-button">View Our Fleet</a>
+        </div>
+
+        <p><strong>Best regards,</strong><br>
+        <strong>TNT Limousine Team</strong><br>
+        Richmond, VA | (804) 346-4141</p>
+    </div>
+
+    <div class="tnt-footer">
+        <div class="company-info">
+            <strong>TNT Limousine</strong> | Richmond, Virginia
+        </div>
+        <div class="contact-info">
+            Phone: (804) 346-4141 | Email: info@tntlimousine.com
+        </div>
+        <div class="contact-info">
+            Emergency: 24/7 Dispatch | Website: tntlimousine.com
+        </div>
+        <div class="tagline">
+            "Driven by Service, Defined by Excellence"
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<!-- =====================================================
+     TEMPLATE 2: AIRPORT SERVICE PRICING
+     ===================================================== -->
+
+<div class="tnt-email-container" id="airport-service-pricing">
+    <div class="tnt-header">
+        <div class="tnt-logo">TNT LIMOUSINE</div>
+        <div class="tnt-tagline">Competitive Airport Transportation</div>
+    </div>
+
+    <div class="tnt-content">
+        <h2 style="color: #000000; margin-top: 0;">Airport Transportation - Competitive Pricing & Reliability</h2>
+
+        <p>Hello <strong>{{contact_name}}</strong>,</p>
+
+        <p>Thank you for choosing TNT Limousine for your airport transportation needs. We're pleased to provide you with our competitive pricing and highlight why we're Richmond's preferred choice for airport transfers.</p>
+
+        <div class="tnt-advantages">
+            <h3>Our Competitive Airport Rates:</h3>
+            <table class="tnt-pricing-table">
+                <thead>
+                    <tr>
+                        <th>Destination</th>
+                        <th>TNT Price</th>
+                        <th>Richmond Limo</th>
+                        <th>TNT Advantage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>BWI Airport</strong></td>
+                        <td class="tnt-price">$657</td>
+                        <td class="competitor-price">$650</td>
+                        <td>Superior vehicle quality & 15+ year experienced drivers</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dulles Airport</strong></td>
+                        <td class="tnt-price">$460</td>
+                        <td class="competitor-price">$450</td>
+                        <td>99.9% on-time performance guarantee</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Reagan National</strong></td>
+                        <td class="tnt-price">$450</td>
+                        <td class="competitor-price">$440</td>
+                        <td>24/7 availability and real-time tracking</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Richmond Int'l</strong></td>
+                        <td class="tnt-price">$125</td>
+                        <td class="competitor-price">$120</td>
+                        <td>Local expertise and fastest response time</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%); color: white; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
+            <h3 style="margin-top: 0; color: white;">Why Pay More When You Get More with TNT?</h3>
+            <p style="margin-bottom: 0;">Competitive pricing + Superior service = Exceptional value</p>
+        </div>
+
+        <div class="tnt-advantages">
+            <h3>TNT Airport Service Advantages:</h3>
+            <ul>
+                <li><strong>✓ Certified Airport Access</strong> - Authorized for all major airports</li>
+                <li><strong>✓ Flight Monitoring</strong> - We track your flight and adjust pickup times</li>
+                <li><strong>✓ Meet & Greet Service</strong> - Professional chauffeur meets you at baggage claim</li>
+                <li><strong>✓ Corporate Accounts</strong> - Simplified billing for business travelers</li>
+                <li><strong>✓ Vehicle Selection</strong> - Sedans, SUVs, vans for any group size</li>
+                <li><strong>✓ 24/7 Dispatch</strong> - Round-the-clock service including holidays</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://leads.tntlimousine.com/book-airport/{{lead_id}}" class="tnt-cta-button">Book Airport Service</a>
+            <a href="https://leads.tntlimousine.com/calculator" class="tnt-cta-button">ROI Calculator</a>
+        </div>
+
+        <p>We will contact you within 5 minutes to confirm your booking details and provide any additional information you need.</p>
+    </div>
+
+    <div class="tnt-footer">
+        <div class="company-info">
+            <strong>TNT Limousine</strong> | Richmond's Airport Transportation Specialists
+        </div>
+        <div class="contact-info">
+            24/7 Dispatch: (804) 346-4141 | Email: airport@tntlimousine.com
+        </div>
+        <div class="tagline">
+            "33 Years of Reliable Airport Transportation"
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<!-- =====================================================
+     TEMPLATE 3: WEDDING TRANSPORTATION
+     ===================================================== -->
+
+<div class="tnt-email-container" id="wedding-transportation">
+    <div class="tnt-header">
+        <div class="tnt-logo">TNT LIMOUSINE</div>
+        <div class="tnt-tagline">Making Your Special Day Perfect</div>
+    </div>
+
+    <div class="tnt-content">
+        <h2 style="color: #000000; margin-top: 0;">Wedding Transportation - Your Special Day Deserves Excellence</h2>
+
+        <p>Dear <strong>{{contact_name}}</strong>,</p>
+
+        <p>Congratulations on your upcoming wedding! TNT Limousine is honored that you're considering us for your special day transportation. With 33 years of experience, we understand that every detail matters for your perfect wedding.</p>
+
+        <div class="tnt-advantages">
+            <h3>TNT Wedding Transportation Excellence:</h3>
+            <ul>
+                <li><strong>33 Years of Wedding Experience</strong> - We've perfected wedding day logistics</li>
+                <li><strong>On-Time Guarantee</strong> - 99.9% reliability for your most important day</li>
+                <li><strong>Professional Chauffeurs</strong> - Formally trained in wedding day etiquette</li>
+                <li><strong>Luxury Fleet</strong> - Pristine vehicles detailed for your special day</li>
+                <li><strong>Coordination Service</strong> - We work with your wedding planner</li>
+                <li><strong>Backup Vehicle Policy</strong> - Peace of mind with backup coverage</li>
+            </ul>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #000000; margin-top: 0;">Your Wedding Service Package:</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li><strong>Service Date:</strong> {{service_date}}</li>
+                <li><strong>Bridal Party Size:</strong> {{passenger_count}} passengers</li>
+                <li><strong>Pickup Location:</strong> {{pickup_location}}</li>
+                <li><strong>Ceremony Venue:</strong> {{destination}}</li>
+                <li><strong>Estimated Investment:</strong> ${{estimated_value}}</li>
+            </ul>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%); color: white; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
+            <h3 style="margin-top: 0; color: white;">Wedding Day Peace of Mind</h3>
+            <p style="margin-bottom: 0;">"Let us handle the transportation so you can focus on celebrating your love"</p>
+        </div>
+
+        <div class="tnt-advantages">
+            <h3>What's Included in Your Wedding Package:</h3>
+            <ul>
+                <li><strong>✓ Pre-Wedding Consultation</strong> - Timeline planning and route optimization</li>
+                <li><strong>✓ Wedding Day Coordination</strong> - Communication with your wedding planner</li>
+                <li><strong>✓ Red Carpet Service</strong> - VIP arrival at ceremony and reception</li>
+                <li><strong>✓ Complimentary Amenities</strong> - Champagne, water, and bridal necessities kit</li>
+                <li><strong>✓ Professional Photography</strong> - Arrival photos at no extra charge</li>
+                <li><strong>✓ Flexible Timing</strong> - We adapt to your wedding day schedule</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://leads.tntlimousine.com/wedding-quote/{{lead_id}}" class="tnt-cta-button">Get Wedding Quote</a>
+            <a href="https://tntlimousine.com/wedding-gallery" class="tnt-cta-button">View Wedding Gallery</a>
+        </div>
+
+        <p>Our wedding specialist will contact you within 5 minutes to discuss your vision and create a customized transportation plan for your perfect day.</p>
+    </div>
+
+    <div class="tnt-footer">
+        <div class="company-info">
+            <strong>TNT Limousine</strong> | Richmond's Wedding Transportation Specialists
+        </div>
+        <div class="contact-info">
+            Wedding Specialist: (804) 346-4141 | Email: weddings@tntlimousine.com
+        </div>
+        <div class="tagline">
+            "Creating Perfect Wedding Day Memories Since 1992"
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<!-- =====================================================
+     TEMPLATE 4: FOLLOW-UP SEQUENCE DAY 3
+     ===================================================== -->
+
+<div class="tnt-email-container" id="follow-up-day-3">
+    <div class="tnt-header">
+        <div class="tnt-logo">TNT LIMOUSINE</div>
+        <div class="tnt-tagline">Following Up on Your Transportation Needs</div>
+    </div>
+
+    <div class="tnt-content">
+        <h2 style="color: #000000; margin-top: 0;">Additional Service Information & Success Stories</h2>
+
+        <p>Hello <strong>{{contact_name}}</strong>,</p>
+
+        <p>I hope this message finds you well. A few days ago, you inquired about our <strong>{{service_type}}</strong> transportation services. I wanted to follow up and share some additional information that might be helpful for your decision.</p>
+
+        <div class="tnt-advantages">
+            <h3>Recent Client Success Stories:</h3>
+            <ul>
+                <li><strong>Richmond Financial Group</strong> - "TNT's reliability improved our client impression scores by 40%"</li>
+                <li><strong>Virginia Commonwealth University</strong> - "Perfect coordination for our executive events"</li>
+                <li><strong>The Jefferson Hotel</strong> - "TNT is our trusted partner for VIP guest transportation"</li>
+                <li><strong>Williams Mullen Law Firm</strong> - "Professional service that reflects our company values"</li>
+            </ul>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #000000; margin-top: 0;">Why Richmond Businesses Choose TNT:</h3>
+            <ul>
+                <li><strong>Local Expertise</strong> - 33 years serving Richmond's business community</li>
+                <li><strong>Reliability</strong> - 99.9% on-time performance builds client confidence</li>
+                <li><strong>Professional Image</strong> - Our service enhances your company's reputation</li>
+                <li><strong>Cost Efficiency</strong> - Competitive rates with superior value</li>
+                <li><strong>Flexibility</strong> - We adapt to your changing business needs</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://leads.tntlimousine.com/case-studies" class="tnt-cta-button">Read Case Studies</a>
+            <a href="https://leads.tntlimousine.com/quote/{{lead_id}}" class="tnt-cta-button">Get Updated Quote</a>
+        </div>
+
+        <p>If you have any questions or would like to discuss your transportation needs further, please don't hesitate to reach out. We're here to provide the reliable, professional service that Richmond businesses depend on.</p>
+    </div>
+
+    <div class="tnt-footer">
+        <div class="company-info">
+            <strong>TNT Limousine</strong> | Richmond's Business Transportation Partner
+        </div>
+        <div class="contact-info">
+            Direct Line: (804) 346-4141 | Email: info@tntlimousine.com
+        </div>
+        <div class="tagline">
+            "Building Business Relationships Through Reliable Transportation"
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<!-- =====================================================
+     TEMPLATE 5: FOLLOW-UP SEQUENCE DAY 7
+     ===================================================== -->
+
+<div class="tnt-email-container" id="follow-up-day-7">
+    <div class="tnt-header">
+        <div class="tnt-logo">TNT LIMOUSINE</div>
+        <div class="tnt-tagline">Special Offers & Volume Discounts</div>
+    </div>
+
+    <div class="tnt-content">
+        <h2 style="color: #000000; margin-top: 0;">Exclusive Offers for New Corporate Clients</h2>
+
+        <p>Dear <strong>{{contact_name}}</strong>,</p>
+
+        <p>As a valued potential client, I'm pleased to offer you exclusive pricing and volume discounts available to new corporate accounts. These offers are designed to demonstrate our commitment to building long-term partnerships with Richmond businesses.</p>
+
+        <div style="background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%); color: white; padding: 25px; border-radius: 8px; margin: 20px 0; text-align: center;">
+            <h3 style="margin-top: 0; color: white;">🎯 New Client Special Offers</h3>
+            <p style="font-size: 18px; margin: 10px 0;"><strong>15% OFF</strong> your first booking</p>
+            <p style="font-size: 18px; margin: 10px 0;"><strong>25% OFF</strong> when you book 3+ trips</p>
+            <p style="font-size: 18px; margin: 10px 0;"><strong>FREE</strong> Meet & Greet service</p>
+            <p style="margin-bottom: 0; font-size: 14px;">*Valid for bookings made within 14 days</p>
+        </div>
+
+        <div class="tnt-advantages">
+            <h3>Corporate Account Benefits:</h3>
+            <ul>
+                <li><strong>Volume Discounts</strong> - 5-15% savings based on monthly usage</li>
+                <li><strong>Simplified Billing</strong> - Monthly invoicing with detailed reporting</li>
+                <li><strong>Priority Booking</strong> - Guaranteed availability for account holders</li>
+                <li><strong>Dedicated Account Manager</strong> - Personal service representative</li>
+                <li><strong>24/7 Support</strong> - After-hours assistance for urgent needs</li>
+                <li><strong>Flexible Payment Terms</strong> - Net 30 payment terms available</li>
+            </ul>
+        </div>
+
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: #000000; margin-top: 0;">Estimated Monthly Savings:</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Monthly Usage</strong></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Volume Discount</strong></td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Annual Savings</strong></td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">$1,000 - $2,499</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">5%</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">$600 - $1,499</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">$2,500 - $4,999</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">10%</td>
+                    <td style="padding: 8px; border-bottom: 1px solid #ddd;">$3,000 - $5,999</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px;">$5,000+</td>
+                    <td style="padding: 8px;">15%</td>
+                    <td style="padding: 8px;">$9,000+</td>
+                </tr>
+            </table>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://leads.tntlimousine.com/special-offer/{{lead_id}}" class="tnt-cta-button">Claim Special Offer</a>
+            <a href="https://leads.tntlimousine.com/corporate-accounts" class="tnt-cta-button">Setup Corporate Account</a>
+        </div>
+
+        <p><strong>This exclusive offer expires in 7 days.</strong> Don't miss the opportunity to start saving while experiencing Richmond's premier transportation service.</p>
+    </div>
+
+    <div class="tnt-footer">
+        <div class="company-info">
+            <strong>TNT Limousine</strong> | Corporate Transportation Solutions
+        </div>
+        <div class="contact-info">
+            Corporate Sales: (804) 346-4141 | Email: corporate@tntlimousine.com
+        </div>
+        <div class="tagline">
+            "Partner with Richmond's Most Trusted Transportation Company"
+        </div>
+    </div>
+</div>
+
+<br><br>
+
+<!-- =====================================================
+     TEMPLATE 6: FINAL OUTREACH DAY 14
+     ===================================================== -->
+
+<div class="tnt-email-container" id="follow-up-day-14">
+    <div class="tnt-header">
+        <div class="tnt-logo">TNT LIMOUSINE</div>
+        <div class="tnt-tagline">Final Outreach & Alternative Solutions</div>
+    </div>
+
+    <div class="tnt-content">
+        <h2 style="color: #000000; margin-top: 0;">Final Thoughts & Alternative Transportation Solutions</h2>
+
+        <p>Dear <strong>{{contact_name}}</strong>,</p>
+
+        <p>I understand that choosing the right transportation partner is an important decision for your business. Over the past two weeks, I've shared information about TNT Limousine's services, competitive advantages, and special offers.</p>
+
+        <p>While I believe TNT is the best choice for your <strong>{{service_type}}</strong> needs, I respect that you may be considering other options or have different timing requirements. Before we close this conversation, I'd like to offer a few final thoughts and alternative solutions:</p>
+
+        <div class="tnt-advantages">
+            <h3>If Budget is a Concern:</h3>
+            <ul>
+                <li><strong>Flexible Pricing Options</strong> - We can work within your budget constraints</li>
+                <li><strong>Shared Ride Programs</strong> - Cost-effective solutions for regular routes</li>
+                <li><strong>Off-Peak Discounts</strong> - Savings for non-peak hour bookings</li>
+                <li><strong>Partnership Opportunities</strong> - Explore referral programs and joint services</li>
+            </ul>
+        </div>
+
+        <div class="tnt-advantages">
+            <h3>If Timing Isn't Right:</h3>
+            <ul>
+                <li><strong>Future Booking Hold</strong> - Reserve our services for when you're ready</li>
+                <li><strong>Seasonal Planning</strong> - Pre-plan for busy periods or special events</li>
+                <li><strong>Emergency Services</strong> - We're here when unexpected needs arise</li>
+                <li><strong>Quarterly Check-ins</strong> - Stay informed about new services and offers</li>
+            </ul>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
+            <h3 style="color: #000000; margin-top: 0;">Our Commitment to You</h3>
+            <p style="margin-bottom: 0;">"Even if you choose another provider today, TNT Limousine will be here when you need exceptional transportation service. Our door is always open to serve Richmond's business community."</p>
+        </div>
+
+        <div style="background: #333333; color: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="color: white; margin-top: 0;">Stay Connected with TNT:</h3>
+            <ul style="margin-bottom: 0;">
+                <li>📧 <strong>Quarterly Updates</strong> - New services and industry insights</li>
+                <li>🎯 <strong>Special Promotions</strong> - Exclusive offers for business contacts</li>
+                <li>📱 <strong>Emergency Services</strong> - 24/7 availability when you need us most</li>
+                <li>🤝 <strong>Community Involvement</strong> - Supporting Richmond business events</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://leads.tntlimousine.com/stay-connected" class="tnt-cta-button">Stay Connected</a>
+            <a href="https://leads.tntlimousine.com/contact" class="tnt-cta-button">Contact Us Anytime</a>
+        </div>
+
+        <p>Thank you for considering TNT Limousine. We wish you success in all your business endeavors, and we look forward to potentially serving you in the future.</p>
+
+        <p><strong>Warmest regards,</strong><br>
+        <strong>The TNT Limousine Team</strong><br>
+        <em>"Always here when Richmond businesses need reliable transportation"</em></p>
+    </div>
+
+    <div class="tnt-footer">
+        <div class="company-info">
+            <strong>TNT Limousine</strong> | Richmond's Transportation Partner Since 1992
+        </div>
+        <div class="contact-info">
+            Always Available: (804) 346-4141 | Email: always@tntlimousine.com
+        </div>
+        <div class="tagline">
+            "33 Years of Service Excellence - Here When You Need Us"
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+<!-- =====================================================
+     EMAIL TEMPLATE USAGE NOTES
+     =====================================================
+
+Template Variables for Personalization:
+- {{contact_name}} - Primary contact person name
+- {{company_name}} - Company or organization name
+- {{service_type}} - Type of service requested
+- {{service_date}} - Requested service date
+- {{estimated_value}} - Estimated booking value
+- {{pickup_location}} - Pickup address or location
+- {{destination}} - Destination address
+- {{phone}} - Contact phone number
+- {{lead_id}} - Unique lead identifier for tracking
+
+CSS Customization:
+- TNT brand colors: Black (#000000), Red (#DC2626), White (#FFFFFF)
+- Responsive design works on mobile devices
+- Templates can be customized for different service types
+- A/B testing variations can be created by modifying subject lines and CTAs
+
+Performance Tracking:
+- Open tracking via invisible pixel
+- Click tracking on all CTA buttons
+- Conversion tracking through unique URLs
+- Email engagement analytics integration
+
+Technical Implementation:
+- Templates compatible with major email providers
+- HTML/CSS follows email client best practices
+- Handlebars template engine for variable replacement
+- Automated sending through richweb.net SMTP
+- Delivery tracking and bounce handling included
+
+===================================================== -->

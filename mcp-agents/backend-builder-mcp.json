@@ -1,0 +1,253 @@
+{
+  "name": "backend-builder-mcp",
+  "version": "1.0.0",
+  "description": "Backend API builder for TNT Speed-to-Lead system with Node.js/Python, lead scoring, and automation",
+  "type": "mcp-agent",
+  "capabilities": [
+    "api-development",
+    "database-modeling",
+    "lead-scoring-algorithms",
+    "email-automation",
+    "webhook-processing",
+    "real-time-notifications"
+  ],
+  "technology_stack": {
+    "runtime": "Node.js 18+",
+    "framework": "Express.js",
+    "database": "PostgreSQL 15",
+    "orm": "Prisma",
+    "queue_system": "Bull Queue + Redis",
+    "cache": "Redis",
+    "email": "Nodemailer + richweb.net SMTP",
+    "websockets": "Socket.io",
+    "validation": "Zod"
+  },
+  "api_architecture": {
+    "base_url": "/api/v2",
+    "middleware_stack": [
+      "cors",
+      "helmet",
+      "rate_limiting",
+      "authentication",
+      "request_validation",
+      "error_handling",
+      "logging"
+    ],
+    "endpoint_groups": {
+      "leads": {
+        "base_path": "/leads",
+        "methods": ["POST", "GET", "PUT", "DELETE"],
+        "features": ["pagination", "filtering", "sorting", "search"]
+      },
+      "automation": {
+        "base_path": "/automation",
+        "methods": ["POST", "GET", "PUT"],
+        "features": ["template_management", "performance_tracking", "a_b_testing"]
+      },
+      "analytics": {
+        "base_path": "/analytics",
+        "methods": ["GET"],
+        "features": ["dashboard_metrics", "conversion_funnel", "response_times"]
+      },
+      "integrations": {
+        "base_path": "/integrations",
+        "methods": ["GET", "POST"],
+        "features": ["health_checks", "sync_triggers", "status_monitoring"]
+      },
+      "webhooks": {
+        "base_path": "/webhooks",
+        "methods": ["POST"],
+        "features": ["form_processing", "email_tracking", "crm_sync"]
+      }
+    }
+  },
+  "lead_scoring_algorithm": {
+    "scoring_factors": {
+      "company_presence": {
+        "weight": 10,
+        "calculation": "company_name ? 10 : 0"
+      },
+      "estimated_value": {
+        "weight": 30,
+        "tiers": {
+          "high": {"threshold": 1000, "points": 30},
+          "medium": {"threshold": 500, "points": 20},
+          "low": {"threshold": 0, "points": 10}
+        }
+      },
+      "service_type": {
+        "weight": 25,
+        "values": {
+          "corporate": 25,
+          "airport": 20,
+          "events": 15,
+          "wedding": 15,
+          "hourly": 10
+        }
+      },
+      "geographic_proximity": {
+        "weight": 15,
+        "ranges": {
+          "local": {"max_miles": 25, "points": 15},
+          "regional": {"max_miles": 50, "points": 10},
+          "extended": {"max_miles": 100, "points": 5},
+          "distant": {"max_miles": 999, "points": 0}
+        }
+      },
+      "group_size": {
+        "weight": 15,
+        "ranges": {
+          "large": {"min_passengers": 8, "points": 15},
+          "medium": {"min_passengers": 4, "points": 10},
+          "small": {"min_passengers": 1, "points": 5}
+        }
+      },
+      "timing_urgency": {
+        "weight": 5,
+        "calculation": "same_day ? 5 : next_day ? 3 : 1"
+      }
+    },
+    "thresholds": {
+      "critical": 80,
+      "high": 60,
+      "medium": 40,
+      "low": 0
+    }
+  },
+  "email_automation": {
+    "smtp_config": {
+      "provider": "richweb.net",
+      "host": "mail.richweb.net",
+      "port": 587,
+      "security": "STARTTLS",
+      "from_address": "TNT Limousine <noreply@tntlimousine.com>",
+      "reply_to": "info@tntlimousine.com"
+    },
+    "template_system": {
+      "engine": "handlebars",
+      "base_template": "tnt_branded_layout",
+      "personalization_fields": [
+        "contact_name",
+        "company_name",
+        "service_type",
+        "estimated_value",
+        "service_date",
+        "pickup_location",
+        "destination"
+      ]
+    },
+    "automation_sequences": {
+      "instant_response": {
+        "trigger": "lead_created",
+        "delay": "0_minutes",
+        "conditions": ["all_leads"]
+      },
+      "follow_up_sequence": {
+        "triggers": ["no_response_3_days", "no_response_7_days", "no_response_14_days"],
+        "conditions": ["status_not_converted"]
+      },
+      "high_value_alert": {
+        "trigger": "high_value_lead_created",
+        "delay": "0_minutes",
+        "conditions": ["estimated_value >= 1000"]
+      }
+    }
+  },
+  "webhook_processing": {
+    "form_submission_handler": {
+      "endpoint": "/webhooks/form-submission",
+      "processing_steps": [
+        "validate_input",
+        "deduplicate_check",
+        "calculate_lead_score",
+        "save_to_database",
+        "trigger_automated_response",
+        "send_high_value_notifications",
+        "queue_crm_sync"
+      ],
+      "response_time_target": "< 2_seconds"
+    },
+    "email_engagement_handler": {
+      "endpoint": "/webhooks/email-engagement",
+      "events": ["delivered", "opened", "clicked", "bounced", "complained"],
+      "processing": "update_interaction_tracking"
+    },
+    "crm_update_handler": {
+      "endpoint": "/webhooks/crm-updates",
+      "bidirectional_sync": true,
+      "conflict_resolution": "timestamp_based"
+    }
+  },
+  "notification_system": {
+    "channels": {
+      "sms": {
+        "provider": "twilio",
+        "use_cases": ["high_value_leads", "system_alerts"],
+        "recipients": ["manager_phone_1", "manager_phone_2"]
+      },
+      "slack": {
+        "webhook_integration": true,
+        "channels": ["#tnt-leads", "#tnt-alerts"],
+        "formatting": "rich_attachments"
+      },
+      "email": {
+        "internal_notifications": true,
+        "use_cases": ["daily_reports", "system_status"]
+      },
+      "websocket": {
+        "real_time_dashboard": true,
+        "events": ["new_lead", "status_change", "response_sent"]
+      }
+    }
+  },
+  "database_models": {
+    "lead": {
+      "fields": [
+        "id", "company_name", "contact_name", "email", "phone",
+        "service_type", "estimated_value", "lead_score", "status",
+        "pickup_location", "destination", "service_date", "passenger_count",
+        "source", "created_at", "updated_at"
+      ],
+      "relationships": [
+        "hasMany: lead_interactions",
+        "hasMany: email_sequences",
+        "hasMany: notifications"
+      ]
+    },
+    "lead_interaction": {
+      "fields": [
+        "id", "lead_id", "interaction_type", "content", "automated",
+        "email_opened_at", "email_clicked_at", "response_received", "created_at"
+      ]
+    },
+    "automated_response": {
+      "fields": [
+        "id", "template_name", "subject_line", "content", "trigger_conditions",
+        "active", "sent_count", "opened_count", "clicked_count", "response_count"
+      ]
+    },
+    "external_integration": {
+      "fields": [
+        "id", "service_name", "api_endpoint", "last_sync", "sync_status",
+        "error_message", "active", "sync_frequency"
+      ]
+    }
+  },
+  "performance_requirements": {
+    "api_response_times": {
+      "lead_creation": "< 500ms",
+      "dashboard_data": "< 300ms",
+      "webhook_processing": "< 2_seconds"
+    },
+    "queue_processing": {
+      "email_sending": "< 5_minutes",
+      "crm_sync": "< 15_minutes",
+      "notification_delivery": "< 30_seconds"
+    },
+    "database_optimization": {
+      "connection_pooling": true,
+      "query_optimization": true,
+      "indexing_strategy": "comprehensive"
+    }
+  }
+}
